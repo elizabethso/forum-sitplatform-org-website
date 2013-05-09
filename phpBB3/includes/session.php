@@ -1921,6 +1921,15 @@ class user extends session
 			}
 		}
 
+                // [+] Karma MOD
+		if (!class_exists('karmamod'))
+		{
+			require($phpbb_root_path . 'includes/functions_karma.' . $phpEx);
+		}
+		global $karmamod;
+		$karmamod = new karmamod();
+		// [-] Karma MOD
+
 		return;
 	}
 

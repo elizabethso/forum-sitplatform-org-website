@@ -71,6 +71,22 @@
 			<!-- NOTE: Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
 			<dt>{PROFILE_FIELD1_NAME}:</dt> <dd>{PROFILE_FIELD1_VALUE}</dd>
 		<!-- ENDIF -->
+
+                <!-- [+] Karma MOD //-->
+		<!-- IF S_KARMA -->
+			<dt>{L_KARMA}:</dt>
+			<dd>{KARMA}<!-- IF U_KARMA_COMMENTS --> | <strong><a href="{U_KARMA_COMMENTS}">{L_KARMA_USER_COMMENTS}</a></strong><!-- ENDIF -->
+				<!-- IF U_KARMA_INCREASE || U_KARMA_DECREASE -->
+				<br />
+				<span class="karma-icons">
+				<!-- IF U_KARMA_INCREASE --><span class="karma-increase-icon"><a href="{U_KARMA_INCREASE}" title="{L_KARMA_INCREASE}"><span>{L_KARMA_INCREASE}</span></a></span><!-- ENDIF -->
+				<!-- IF U_KARMA_DECREASE --><span class="karma-decrease-icon"><a href="{U_KARMA_DECREASE}" title="{L_KARMA_DECREASE}"><span>{L_KARMA_DECREASE}</span></a></span><!-- ENDIF -->
+				</span>
+			<!-- ENDIF -->
+			</dd>
+		<!-- ENDIF -->
+		<!-- [-] Karma MOD //-->
+
 		</dl>
 	</div>
 
@@ -92,6 +108,22 @@
 				<dt>{L_ACTIVE_IN_FORUM}:</dt> <dd><!-- IF ACTIVE_FORUM != '' --><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
 				<dt>{L_ACTIVE_IN_TOPIC}:</dt> <dd><!-- IF ACTIVE_TOPIC != '' --><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
 			<!-- ENDIF -->
+
+                        		<!-- [+] Karma MOD //-->
+		<!-- IF S_KARMA -->
+			<dt>{L_KARMA}:</dt>
+			<dd>{KARMA}<!-- IF U_KARMA_COMMENTS --> | <strong><a href="{U_KARMA_COMMENTS}">{L_KARMA_USER_COMMENTS}</a></strong><!-- ENDIF -->
+				<!-- IF U_KARMA_INCREASE || U_KARMA_DECREASE -->
+				<br />
+				<span class="karma-icons">
+				<!-- IF U_KARMA_INCREASE --><span class="karma-increase-icon"><a href="{U_KARMA_INCREASE}" title="{L_KARMA_INCREASE}"><span>{L_KARMA_INCREASE}</span></a></span><!-- ENDIF -->
+				<!-- IF U_KARMA_DECREASE --><span class="karma-decrease-icon"><a href="{U_KARMA_DECREASE}" title="{L_KARMA_DECREASE}"><span>{L_KARMA_DECREASE}</span></a></span><!-- ENDIF -->
+				</span>
+			<!-- ENDIF -->
+			</dd>
+		<!-- ENDIF -->
+		<!-- [-] Karma MOD //-->
+
 		</dl>
 	</div>
 	<span class="corners-bottom"><span></span></span></div>

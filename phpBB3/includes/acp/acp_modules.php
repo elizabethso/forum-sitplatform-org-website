@@ -101,7 +101,12 @@ class acp_modules
 				}
 				else
 				{
-					confirm_box(false, 'DELETE_MODULE', build_hidden_fields(array(
+                                        // [+] Karma MOD
+			                global $karmamod;
+			                $karmamod->acp_modules_single($directory, $module, $module_class);
+			                // [-] Karma MOD
+					
+                                        confirm_box(false, 'DELETE_MODULE', build_hidden_fields(array(
 						'i'			=> $id,
 						'mode'		=> $mode,
 						'parent_id'	=> $this->parent_id,
@@ -214,6 +219,10 @@ class acp_modules
 				}
 				else
 				{
+                                        // [+] Karma MOD
+			                global $karmamod;
+			                $karmamod->acp_modules_single($directory, $module, $module_class);
+			                // [-] Karma MOD
 					confirm_box(false, 'ADD_MODULE', build_hidden_fields(array(
 						'i'			=> $id,
 						'mode'		=> $mode,
@@ -386,6 +395,10 @@ class acp_modules
 		}
 		else
 		{
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
 			$navigation = '<a href="' . $this->u_action . '">' . strtoupper($this->module_class) . '</a>';
 
 			$modules_nav = $this->get_module_branch($this->parent_id, 'parents', 'descending');
@@ -400,6 +413,10 @@ class acp_modules
 				}
 				else
 				{
+                                        // [+] Karma MOD
+			                global $karmamod;
+			                $karmamod->acp_modules_single($directory, $module, $module_class);
+			                // [-] Karma MOD
 					$navigation .= ' -&gt; <a href="' . $this->u_action . '&amp;parent_id=' . $row['module_id'] . '">' . $langname . '</a>';
 				}
 			}
@@ -427,6 +444,10 @@ class acp_modules
 				}
 				else
 				{
+                                        // [+] Karma MOD
+		   	                global $karmamod;
+			                $karmamod->acp_modules_single($directory, $module, $module_class);
+			                // [-] Karma MOD
 					$module_image = (!$row['module_basename'] || $row['left_id'] + 1 != $row['right_id']) ? '<img src="images/icon_subfolder.gif" alt="' . $user->lang['CATEGORY'] . '" />' : '<img src="images/icon_folder.gif" alt="' . $user->lang['MODULE'] . '" />';
 				}
 
@@ -569,10 +590,19 @@ class acp_modules
 			}
 			closedir($dh);
 
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_global($fileinfo, $module_class);
+			// [-] Karma MOD
+
 			ksort($fileinfo);
 		}
 		else
 		{
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
 			$filename = $module_class . '_' . basename($module);
 			$class = $module_class . '_' . basename($module) . '_info';
 
@@ -791,6 +821,10 @@ class acp_modules
 			}
 			else
 			{
+                                // [+] Karma MOD
+			        global $karmamod;
+			        $karmamod->acp_modules_single($directory, $module, $module_class);
+			        // [-] Karma MOD
 				$sql = 'SELECT MAX(right_id) AS right_id
 					FROM ' . MODULES_TABLE . "
 					WHERE module_class = '" . $db->sql_escape($module_data['module_class']) . "'";
@@ -814,6 +848,10 @@ class acp_modules
 		}
 		else
 		{
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
 			$row = $this->get_module_row($module_data['module_id']);
 
 			if ($module_data['module_basename'] && !$row['module_basename'])
@@ -910,11 +948,19 @@ class acp_modules
 			}
 			else
 			{
+                                // [+] Karma MOD
+			        global $karmamod;
+			        $karmamod->acp_modules_single($directory, $module, $module_class);
+			        // [-] Karma MOD
 				$diff = '- ' . abs($to_data['right_id'] - $from_data['right_id'] - 1);
 			}
 		}
 		else
 		{
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
 			$sql = 'SELECT MAX(right_id) AS right_id
 				FROM ' . MODULES_TABLE . "
 				WHERE module_class = '" . $db->sql_escape($this->module_class) . "'
@@ -1031,6 +1077,10 @@ class acp_modules
 		}
 		else
 		{
+                        // [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
 			$left_id = (int) $module_row['left_id'];
 			$right_id = (int) $target['right_id'];
 

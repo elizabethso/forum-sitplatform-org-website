@@ -113,6 +113,10 @@ unset($dbpasswd);
 // Grab global variables, re-cache if necessary
 $config = $cache->obtain_config();
 
+// [+] Karma MOD
+require_once($phpbb_root_path . 'includes/mods/functions_karma.' . $phpEx);
+// [-] Karma MOD
+
 // Add own hook handler
 require($phpbb_root_path . 'includes/hooks/index.' . $phpEx);
 $phpbb_hook = new phpbb_hook(array('exit_handler', 'phpbb_user_session_handler', 'append_sid', array('template', 'display')));

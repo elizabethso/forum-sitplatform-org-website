@@ -132,6 +132,11 @@ inherit_from = {INHERIT_FROM}
 			),
 		);
 
+                // [+] Karma MOD
+		global $karmamod;
+		$karmamod->acp_styles_imageset($this->imageset_keys);
+		// [-] Karma MOD
+
 		// Execute overall actions
 		switch ($action)
 		{

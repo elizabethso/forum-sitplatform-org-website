@@ -1047,6 +1047,11 @@ class acp_users
 					'USER_INACTIVE_REASON'	=> $inactive_reason,
 				));
 
+                                // [+] Karma MOD
+				global $karmamod;
+				$karmamod->acp_users_overview($user_row);
+				// [-] Karma MOD
+
 			break;
 
 			case 'feedback':
@@ -1498,6 +1503,11 @@ class acp_users
 					'notify'	=> request_var('notify', $user_row['user_notify']),
 				);
 
+                                // [+] Karma MOD
+				global $karmamod;
+				$karmamod->acp_users_data($data, $user_row);
+				// [-] Karma MOD
+
 				if ($submit)
 				{
 					$error = validate_data($data, array(
@@ -1510,6 +1520,10 @@ class acp_users
 						'post_sk'		=> array('string', false, 1, 1),
 						'post_sd'		=> array('string', false, 1, 1),
 					));
+
+                                        // [+] Karma MOD
+					$karmamod->acp_users_error($error, $data);
+					// [-] Karma MOD
 
 					if (!check_form_key($form_name))
 					{
@@ -1555,6 +1569,10 @@ class acp_users
 
 							'user_notify'	=> $data['notify'],
 						);
+
+                                                // [+] Karma MOD
+						$karmamod->acp_users_sql($sql_ary, $data);
+						// [-] Karma MOD
 
 						$sql = 'UPDATE ' . USERS_TABLE . '
 							SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "

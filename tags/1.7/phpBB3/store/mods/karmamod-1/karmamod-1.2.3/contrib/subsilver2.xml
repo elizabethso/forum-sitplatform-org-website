@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.3.xsd">
+	<header>
+		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+		<title lang="en">Karma MOD (Template: subSilver2)</title>
+		<description lang="en">Just a subSilver2 template for Karma MOD.</description>
+		<author-group>
+			<author>
+				<email>ru.m157y@gmail.com</email>
+				<realname>Andrey</realname>
+				<username>m157y</username>
+				<contributions-group>
+					<contributions status="current" from="2007-08-01" position="Developer"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.0.2</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.5</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2009-04-16</date>
+				<rev-version>1.0.0</rev-version>
+				<changelog lang="en">
+					<change>Initial release</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-20</date>
+				<rev-version>1.0.1</rev-version>
+				<changelog lang="en">
+					<change>Added a little explain at karma increase/decrease page</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-06</date>
+				<rev-version>1.0.2</rev-version>
+				<changelog lang="en">
+					<change>Added support of karma comments only for karmaed user</change>
+					<change>Added hiding of karma comments options, if comments are disabled</change>
+					<change>Added support of ability to select with which power we want to karma</change>
+					<change>Added support of changing comments sort options</change>
+				</changelog>
+			</entry>
+		</history>
+		<link-group>
+			<link type="parent" href="../install.karmamod.xml" lang="en">Karma MOD Installation Guide</link>
+			<link type="contrib" href="subsilver2.1.0.0.to.1.0.1.xml" lang="en">Upgrade subSilver2 template from version 1.0.0 to version 1.0.1</link>
+			<link type="contrib" href="subsilver2.1.0.1.to.1.0.2.xml" lang="en">Upgrade subSilver2 template from version 1.0.1 to version 1.0.2</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="../root/styles/subsilver2/imageset/icon_karma_decrease.gif" to="/styles/subsilver2/imageset/icon_karma_decrease.gif" />
+			<file from="../root/styles/subsilver2/imageset/icon_karma_increase.gif" to="/styles/subsilver2/imageset/icon_karma_increase.gif" />
+			<file from="../root/styles/subsilver2/template/karma_body.html" to="/styles/subsilver2/template/karma_body.html" />
+			<file from="../root/styles/subsilver2/template/karma_ucp.html" to="/styles/subsilver2/template/karma_ucp.html" />
+			<file from="../root/styles/subsilver2/template/karma_view.html" to="/styles/subsilver2/template/karma_view.html" />
+		</copy>
+		<open src="styles/subsilver2/imageset/imageset.cfg">
+			<edit>
+				<find>img_icon_topic_unapproved = icon_topic_unapproved.gif*18*19</find>
+				<action type="after-add">
+# [+] Karma MOD
+img_icon_karma_increase = icon_karma_increase.gif*15*17
+img_icon_karma_decrease = icon_karma_decrease.gif*15*17
+# [-] Karma MOD</action>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/index_body.html">
+			<edit>
+				<find><![CDATA[<br clear="all" />
+
+<table class="tablebg" width="100%" cellspacing="1">
+<tr>
+	<td class="cat" colspan="2"><h4>{L_STATISTICS}</h4></td>]]></find>
+				<action type="before-add"><![CDATA[<!-- [+] Karma MOD -->
+<!-- IF KARMA_TOPLIST -->
+	<br clear="all" />
+	
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tr>
+		<td class="cat" colspan="2"><h4>{L_KARMA_TOPLIST}</h4></td>
+	</tr>
+	<tr>
+		<td class="row1" align="center" valign="middle"><img src="{T_THEME_PATH}/images/whosonline.gif" alt="{L_KARMA_TOPLIST}" /></td>
+		<td class="row1" width="100%"><p class="genmed">{L_KARMA_TOPLIST_EXPLAIN}: <b>{KARMA_TOPLIST}</b></p></td>
+	</tr>
+	</table>
+<!-- ENDIF -->
+<!-- [-] Karma MOD -->
+]]></action>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/memberlist_view.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_SHOW_ACTIVITY -->]]></find>
+				<action type="before-add"><![CDATA[			<!-- [+] Karma MOD //-->
+			<!-- IF S_KARMA -->
+				<tr>
+					<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{L_KARMA}: </td>
+					<td><b class="gen">{KARMA}</b>
+						<!-- IF U_KARMA_INCREASE or U_KARMA_DECREASE -->
+						<span class="genmed"><!-- IF U_KARMA_INCREASE --><a href="{U_KARMA_INCREASE}">{KARMA_INCREASE_IMG}</a> <!-- ENDIF --><!-- IF U_KARMA_DECREASE --><a href="{U_KARMA_DECREASE}">{KARMA_DECREASE_IMG}</a> <!-- ENDIF --></span>
+						<!-- ENDIF -->
+						<!-- IF U_KARMA_COMMENTS --><br /><span class="genmed">[ <a href="{U_KARMA_COMMENTS}">{L_KARMA_USER_COMMENTS}</a> ]</span><!-- ENDIF -->
+					</td>
+				</tr>
+			<!-- ENDIF -->
+			<!-- [-] Karma MOD //-->]]></action>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/viewtopic_body.html">
+			<edit>
+				<find><![CDATA[					<!-- IF postrow.POSTER_POSTS != '' --><br /><b>{L_POSTS}:</b> {postrow.POSTER_POSTS}<!-- ENDIF -->]]></find>
+				<action type="after-add"><![CDATA[					<!-- [+] Karma MOD -->
+					<!-- IF postrow.S_KARMA_ENABLED -->
+						<!-- IF postrow.U_KARMA_COMMENTS -->
+							<br /><a href="{postrow.U_KARMA_COMMENTS}"><b>{L_KARMA}:</b> {postrow.KARMA}</a><br />
+						<!-- ELSE -->
+							<br /><b>{L_KARMA}:</b> {postrow.KARMA}<br />
+						<!-- ENDIF -->
+						<!-- IF postrow.U_KARMA_INCREASE --> <a href="{postrow.U_KARMA_INCREASE}">{postrow.KARMA_INCREASE_IMG}</a><!-- ENDIF -->
+						<!-- IF postrow.U_KARMA_DECREASE --> <a href="{postrow.U_KARMA_DECREASE}">{postrow.KARMA_DECREASE_IMG}</a><!-- ENDIF -->
+					<!-- ENDIF -->
+					<!-- [-] Karma MOD -->]]></action>
+			</edit>
+		</open>
+	</action-group>
+</mod>

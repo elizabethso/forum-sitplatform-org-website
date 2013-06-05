@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.3.xsd">
+	<header>
+		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+		<title lang="en">Karma MOD</title>
+		<description lang="en">This MOD allows users to karma people.
+This MOD has extensive configuration via ACP and UCP.
+For more information: see features list.</description>
+		<author-notes lang="en"><![CDATA[
++------------------------------+
+ Donate via paypal to m157y@ripdev.com
++------------------------------+
+BugTracker: https://sourceforge.net/tracker/?group_id=195460&atid=953530
+Have a patch? Post it here: https://sourceforge.net/tracker/?group_id=195460&atid=953532
+* Frequently Asked Questions: docs/FAQ.html
+* Features list: docs/FEATURES.html
+* Known issues: docs/ISSUES.html
+* TODO list: docs/TODO.html
+* Our thanks to people: docs/THANKS.html]]></author-notes>
+		<author-group>
+			<author>
+				<email>ru.m157y@gmail.com</email>
+				<realname>Andrey</realname>
+				<username>m157y</username>
+				<contributions-group>
+					<contributions status="current" from="2007-08-01" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<email>support@jd1.clawz.com</email>
+				<realname>Josh W</realname>
+				<username>A_Jelly_Doughnut</username>
+				<contributions-group>
+					<contributions status="past" from="2007-08-01" to="2008-08-01" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<email>tech.lawson@gmail.com</email>
+				<homepage>http://www.c1nz.com/</homepage>
+				<realname>David Lawson</realname>
+				<username>iGuru</username>
+				<contributions-group>
+					<contributions status="past" from="2007-01-01" to="2007-08-01" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<username>davaguco</username>
+				<contributions-group>
+					<contributions status="current" from="2009-04-17" position="Translator (Spanish)"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.2.3</mod-version>
+		<installation>
+			<level>intermediate</level>
+			<time>1200</time>
+			<target-version>3.0.5</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2009-10-17</date>
+				<rev-version>1.2.3</rev-version>
+				<changelog lang="en">
+					<change>Clean-up for moddb</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-10-15</date>
+				<rev-version>1.2.2</rev-version>
+				<changelog lang="en">
+					<change>Added subSilverPlus template</change>
+					<change>Fixed error at oracle install-scheme</change>
+					<change>Fixed errors at firebird install-scheme</change>
+					<change>Fixed error at mssql install-scheme</change>
+					<change>Fixed error with changed users` karma on not added karma</change>
+					<change>Fixed error with email notifications. Messed usernames (Thanks to Andrewsha for report)</change>
+					<change>Fixed error with ignored comments required ACP option (Thanks to Andrewsha for report)</change>
+					<change>Fixed error with doubled plus button on install (Thanks to Stickie for report)</change>
+					<change>Fixed conflict with phpBB Statistics mod (Thanks to Andrewsha for report)</change>
+					<change>Fixed problem with pm outbox folder overflow with pm notifications (Thanks to troublegum44 for report)</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-10-04</date>
+				<rev-version>1.2.1</rev-version>
+				<changelog lang="en">
+					<change>Fixed error with not worked auto-ban feature (Thanks to ckx3009 for report)</change>
+					<change>Updated MODX template to v1.2.3</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-09-24</date>
+				<rev-version>1.2.0</rev-version>
+				<changelog lang="en">
+					<change>Added ability to ban user by minimum karma value</change>
+					<change>Added beta-versions update checker (yep, now you can use stable version on live-board and beta version on test-board)</change>
+					<change>Fixed errors with 'Karma change disabled for this user'</change>
+					<change>Fixed some errors at installer/updater</change>
+					<change>Fixed error with not changable karma value on karma delete (fixed known issue)</change>
+					<change>Fixed some errors at docs</change>
+					<change>Fixed errors at install guide</change>
+					<change>Updated known issues list</change>
+					<change>Reordered changelog</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-15</date>
+				<rev-version>1.1.4</rev-version>
+				<changelog lang="en">
+					<change>Fixed some errors at docs</change>
+					<change>Fixed some errors at installer</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-14</date>
+				<rev-version>1.1.3</rev-version>
+				<changelog lang="en">
+					<change>Added support of phpBB`s permissions system. Now you can enable/disable ability to karma/view comments by user or forum</change>
+					<change>Fixed errors with undefined index: karmaed and post_karma at viewtopic page</change>
+					<change>Fixed error when mozilla doesn't open links at notifications</change>
+					<change>Fixed error with pm notifications. Used settings from karmaing user, not karmaed. Thanks for report to troubleum44 and davaguco</change>
+					<change>Fixed error with email notifications. Used settings from karmaing user, not karmaed</change>
+					<change>Fixed error with jabber notifications. Used settings from karmaing user, not karmaed</change>
+					<change>Fixed error when email notifications was sended with disabled emails via board settings</change>
+					<change>Fixed error with ’No such file or directory’ at MCP modules managment. Thanks for report to ahh72</change>
+					<change>Fixed errors at English translation. Thanks for it to Sir Glen</change>
+					<change>Fixed error with undefined variable: table_prefix at phpbb updater</change>
+					<change>Fixed errors at installer/updater with version compare</change>
+					<change>Fixed error with checking ability to karma with disabled friends/foes system</change>
+					<change>Fixed error with checking ability to karma on already karmaed posts</change>
+					<change>Fixed error at karma power calculation</change>
+					<change>Fixed error when karma comments disabled, we always karmaing with minimum karma power. Now it'll be with maximum, dropdown for it will be added later</change>
+					<change>Fixed error when karma decrease button uses increase button sizes</change>
+					<change>Deleted updater settings, because it's separate module and administrators can hide it, if it not needed</change>
+					<change>Deleted not used ACP module 'stats'</change>
+					<change>Deleted not used language strings</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-14</date>
+				<rev-version>1.1.2</rev-version>
+				<changelog lang="en">
+					<change>Fixed error with ’Module not accessible’, when karma mod is disabled</change>
+					<change>Fixed error with not updatable version after mod update</change>
+					<change>Updated installer/updater</change>
+					<change>Deleted install tab, when karma mod already installed</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-13</date>
+				<rev-version>1.1.1</rev-version>
+				<changelog lang="en">
+					<change>Fixed error with not worked updater</change>
+					<change>Fixed errors with undefined variables at updater</change>
+					<change>Fixed error with wrong ACP/UCP modules installation</change>
+					<change>Updated spanish translation</change>
+					<change>Deleted not used language strings</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-12</date>
+				<rev-version>1.1.0</rev-version>
+				<changelog lang="en">
+					<change>Added ability to show comments only for karmaed user</change>
+					<change>Added global history at ACP</change>
+					<change>Added ability to change sort orders for karma comments</change>
+					<change>Added hiding of karma comments options, if comments are disabled</change>
+					<change>Added ability to select with which power we want to karma</change>
+					<change>Fixed error with user editing via ACP</change>
+					<change>Fixed error at installer with not updated template-cache files for index and viewprofile pages</change>
+					<change>Fixed error at installer with wrong imageset files adding at db</change>
+					<change>Fixed error when email notifications ignores phpBB`s disabled state (Thanks to</change>
+					<change>Fixed error when jabber notifications ignores phpBB`s disabled state</change>
+					<change>Fixed php noice when db-part not installed</change>
+					<change>Fixed error with not accessable modules when karma doesn`t installed</change>
+					<change>Fixed error with not worked checker of comments sort orders, when toplist is disabled</change>
+					<change>Fixed error with wrong user id catching while posting comments</change>
+					<change>Updated installer and updater</change>
+					<change>Updated all update guides, they now for 1.1.0, instead 1.0.0</change>
+					<change>Deleted link to karma comments for guests</change>
+					<change>Deleted not needed sql and optimized existed sql at view comments page</change>
+					<change>Deleted maximum comments per page limit</change>
+					<change>Deleted planned versions from todo list</change>
+					<change>Some another optimizations and clean-ups at view comments page</change>
+					<change>Install guide clean-up and simplification</change>
+					<change>Warning about install_karma directory now showed always when it exists</change>
+					<change>Moved includes to /includes/mods/</change>
+					<change>Moved update checker to separate ACP module</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-24</date>
+				<rev-version>1.0.5</rev-version>
+				<changelog lang="en">
+					<change>Fixed error with undefined variable at user notifications (Thanks to Artack for report)</change>
+					<change>Fixed errors with undefined variables at installer (Thanks to Artack for report)</change>
+					<change>Fixed error with mysql version check at installer (Thanks to Artack for report)</change>
+					<change>Fixed errors with undefined variables before installer run (Thanks to Artack for report)</change>
+					<change>Fixed error with wrong config variable name at installer (Thanks to Artack for report)</change>
+					<change>Fixed error with disabled ability to enable/disable karma via UCP (Thanks to Artack for report)</change>
+					<change>Fixed errors with minimum karma limit</change>
+					<change>Updated prosilver buttons (Thanks to Warlock 75 for it)</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-22</date>
+				<rev-version>1.0.4</rev-version>
+				<changelog lang="en">
+					<change>Added update checker (Can be disabled via ACP)</change>
+					<change>Fixed a little error at spanish translation (Thanks to davaguco for it)</change>
+					<change>Updated docs</change>
+					<change>Guides clean-up</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-20</date>
+				<rev-version>1.0.3</rev-version>
+				<changelog lang="en">
+					<change>Added Spanish translation (Thanks to davaguco for it)</change>
+					<change>Added a little explain at karma increase/decrease page</change>
+					<change>Added minimum karma limit. If users reaches limit, he can't karma anymore</change>
+					<change>Fixed error with missed language variable (Thanks to sotis for report)</change>
+					<change>Fixed some errors at updater</change>
+					<change>Fixed error with admin limits</change>
+					<change>Fixed error with ignored post limit</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-17</date>
+				<rev-version>1.0.2</rev-version>
+				<changelog lang="en">
+					<change>Added post karma template-variable (By sotis request)</change>
+					<change>Fixed error at updater (Thanks to sotis for report)</change>
+					<change>Deleted not needed arguments for functions</change>
+					<change>Guides clean-up</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-17</date>
+				<rev-version>1.0.1</rev-version>
+				<changelog lang="en">
+					<change>Fixed error with pm-notifications (Thanks to Coffee Ninja for report)</change>
+					<change>Documentation clean-up</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-16</date>
+				<rev-version>1.0.0</rev-version>
+				<changelog lang="en">
+					<change>Added copyright string (Be honest, don't delete it)</change>
+					<change>Added ability to enable/disable karma for friends &amp; foes via ACP</change>
+					<change>Added anonymous karma feature. Who karmaed can see only administrators (Configurable via ACP)</change>
+					<change>Added upgrade guide from ’Karma System and Profile Comments MOD 1.0.Beta2’ to ’Karma MOD 1.0.0’</change>
+					<change>Added upgrade guide from ’Karma MOD 1.0.0b2’ to ’Karma MOD 1.0.0’</change>
+					<change>Fixed error with 1.0.0b3 release date</change>
+					<change>Fixed line-endings (Now using UNIX line-endings, like it must be)</change>
+					<change>Fixed version checker at installer</change>
+					<change>Fixed version checkers at updater</change>
+					<change>Fixed error with checking of not existing karma.css at updater</change>
+					<change>Fixed double including of language file</change>
+					<change>Fixed some errors at installation guide</change>
+					<change>Deleted enabling/disabling of drafts, because they doesn't developed yet</change>
+					<change>Updated required version of phpBB (now it's 3.0.4)</change>
+					<change>Reordered configuration list at ACP</change>
+					<change>Guides clean-up</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-15</date>
+				<rev-version>1.0.0b3</rev-version>
+				<changelog lang="en">
+					<change>Added subsilver2 template</change>
+					<change>Added warning about not deleted karma_install directory</change>
+					<change>Added karma value at acp user`s overview page</change>
+					<change>Fixed lot of errors at language files</change>
+					<change>Fixed Private Message URL parsing</change>
+					<change>Fixed errors at prosilver template</change>
+					<change>Fixed error with missing else statement (#1904920)</change>
+					<change>Fixed errors at postgresql-schema (#1904924)</change>
+					<change>Fixed error with karma`s history page at acp</change>
+					<change>Fixed error with checking of not existing karma.css at installer</change>
+					<change>Fixed error with always disabled bbcode, urls, smilies</change>
+					<change>Fixed some other errors, which i already don't remember ;)</change>
+					<change>Deleted some error messages</change>
+					<change>Deleted karma field for users, who disabled karma</change>
+					<change>Updated for phpBB 3.0.4</change>
+					<change>Updated docs</change>
+					<change>Simplified Karma Power calculation</change>
+					<change>Converted to the MODX format</change>
+					<change>Code clean-up</change>
+					<change>Installation guide clean-up</change>
+					<change>A_Jelly_Doughnut dropped this mod, also i(m157y) returned after long "vacation"</change>
+					<change>Temporarily dropped all translation</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2007-10-25</date>
+				<rev-version>1.0.0b2</rev-version>
+				<changelog lang="en">
+					<change>Added comments to install guide</change>
+					<change>Added ability to change karma only x times per day (x configurable via ACP)</change>
+					<change>Added db-updater</change>
+					<change>Added information about planed MOD versions at TODO list</change>
+					<change>Fixed errors at install guide</change>
+					<change>Fixed errors at changelog and thanks</change>
+					<change>Fixed possible apposition of profile buttons</change>
+					<change>Fixed error with sorting at toplist (Thanks to ChALkeR for report)</change>
+					<change>Fixed link generating at viewcomments page (Thanks to ChALkeR for report)</change>
+					<change>Fixed error with karmaed post checking at viewtopic page</change>
+					<change>Fixed error with karma time checking at viewprofile page</change>
+					<change>Fixed error with not showed karma value at viewcomments page on subsilver2 (Thanks to ChALkeR for report)</change>
+					<change>Fixed some errors at language file</change>
+					<change>Fixed error with bad karma power calculating (Another rewrite of this formula) (Thanks to many users for report)</change>
+					<change>Fixed error with undefined class at phpBB's installer/updater (Thanks to azzurri for report)</change>
+					<change>Fixed error with wrong links to profiles at viewcomments page (Thanks to azzurri for report)</change>
+					<change>Fixed little mistake at disabling message box length checker at prosilver (With disabled comments requiment)</change>
+					<change>Fixed error that anyone can install/update mod at db (Now only administrator can do that)</change>
+					<change>Fixed error at installer (Missed values for comments per page and karma enabled/disable state)</change>
+					<change>Updated buttons at viewprofile (now it's supports imageset)</change>
+					<change>Updated for phpBB RC7</change>
+					<change>Reordered TODO list by MOD versions</change>
+					<change>Deleted not imageset's buttons at viewprofile</change>
+					<change>Deleted MOD version from all docs, exclude KarmaMOD.txt</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2007-08-21</date>
+				<rev-version>1.0.0b1</rev-version>
+				<changelog lang="en">
+					<change>Overtaken by m157y with iGuru's permission</change>
+					<change>Now we'll be work together with A_Jelly_Doughnut and with group of translators, you also can join to this group ;)</change>
+					<change>Moved to sourceforge.net's SVN</change>
+					<change>Version renumbering :) all iGuru's versions not counted now, only our versions, because his versions hasn't normal install guide and history of his MOD don't written by him and finally it's like another MOD, because all code was rewritten</change>
+					<change>Added install guide in MOD format</change>
+					<change>Added in karma's files check user status. This fully disable ability to change karma of guests and bots</change>
+					<change>Added 'Karma successfully updated' page</change>
+					<change>Added ability to update karma on viewprofile page</change>
+					<change>Added ability to change needed post count for can karma from ACP :)</change>
+					<change>Added ability to change karma time from ACP</change>
+					<change>Added ability to enable/disable Karma MOD from ACP</change>
+					<change>Added top x list of the people with the most karma</change>
+					<change>Added viewcomments page with link from viewprofile page</change>
+					<change>Added db-part installer</change>
+					<change>Added russian translation</change>
+					<change>Added deutsch - sie translation</change>
+					<change>Added deutsch - du translation</change>
+					<change>Added ability to enable/disable karma power via ACP</change>
+					<change>Added ability users to disable karma</change>
+					<change>Added email/jabber notifications</change>
+					<change>Added ability to global enable/disable PM/email/jabber notifications of karma via ACP</change>
+					<change>Added ability to enable/disable PM/email/jabber notifications of karma via UCP</change>
+					<change>Added ability to enable/disable bbcode/smilies/urls per comment</change>
+					<change>Added backlinks to notifications</change>
+					<change>Added search sorting based on karma</change>
+					<change>Added ability to enable/disable showing of karma power</change>
+					<change>Added ability to configure maximum karma power</change>
+					<change>Fixed correspondence to phpBB's coding guidelines</change>
+					<change>Fixed profile fields work. No more manual work in ACP :)</change>
+					<change>Fixed return to previous page</change>
+					<change>Fixed karma show on viewprofile page</change>
+					<change>Updated work with karma time for work with unix timestamps</change>
+					<change>Updated karma buttons show. Not showed if you can not karma this user or if MOD is disabled</change>
+					<change>Updated PM notifications work</change>
+					<change>Updated karma time for per user work</change>
+					<change>Updated docs, now all at html and styled like phpBB`s docs folder</change>
+					<change>Deleted ability user to rate same post multiple times</change>
+					<change>Deleted ability karma friends or foes</change>
+					<change>Handle multiple posts from same user in single topic</change>
+				</changelog>
+			</entry>
+		</history>
+		<link-group>
+			<link type="template" href="contrib/subsilver2.xml" lang="en">subSilver2</link>
+			<link type="template" href="contrib/subsilverplus.xml" lang="en">subSilverPlus</link>
+			<link type="language" href="contrib/es.xml" lang="en">Spanish</link>
+			<link type="contrib" href="contrib/karma.system.and.profile.comments.xml" lang="en">Upgrade from ’Karma System and Profile Comments MOD 1.0.Beta2’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.0b2.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.0b2’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.0b3.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.0b3’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.0.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.0’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.1.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.1’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.2.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.2’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.3.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.3’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.4.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.4’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.0.5.to.1.1.0.xml" lang="en">Upgrade from ’Karma MOD 1.0.5’ to ’Karma MOD 1.1.0’</link>
+			<link type="contrib" href="contrib/1.1.0.to.1.1.1.xml" lang="en">Upgrade from ’Karma MOD 1.1.0’ to ’Karma MOD 1.1.1’</link>
+			<link type="contrib" href="contrib/1.1.1.to.1.1.2.xml" lang="en">Upgrade from ’Karma MOD 1.1.1’ to ’Karma MOD 1.1.2’</link>
+			<link type="contrib" href="contrib/1.1.2.to.1.1.3.xml" lang="en">Upgrade from ’Karma MOD 1.1.2’ to ’Karma MOD 1.1.3’</link>
+			<link type="contrib" href="contrib/1.1.3.to.1.1.4.xml" lang="en">Upgrade from ’Karma MOD 1.1.3’ to ’Karma MOD 1.1.4’</link>
+			<link type="contrib" href="contrib/1.1.4.to.1.2.0.xml" lang="en">Upgrade from ’Karma MOD 1.1.4’ to ’Karma MOD 1.2.0’</link>
+			<link type="contrib" href="contrib/1.2.0.to.1.2.1.xml" lang="en">Upgrade from ’Karma MOD 1.2.0’ to ’Karma MOD 1.2.1’</link>
+			<link type="contrib" href="contrib/1.2.0.to.1.2.1.xml" lang="en">Upgrade from ’Karma MOD 1.2.1’ to ’Karma MOD 1.2.2’</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/adm/style/acp_karma.html" to="/adm/style/acp_karma.html" />
+			<file from="root/adm/style/acp_karma_users.html" to="/adm/style/acp_karma_users.html" />
+			<file from="root/includes/mods/acp/acp_karma.php" to="/includes/mods/acp/acp_karma.php" />
+			<file from="root/includes/mods/acp/info/acp_karma.php" to="/includes/mods/acp/info/acp_karma.php" />
+			<file from="root/includes/mods/functions_karma.php" to="/includes/mods/functions_karma.php" />
+			<file from="root/includes/mods/ucp/info/ucp_karma.php" to="/includes/mods/ucp/info/ucp_karma.php" />
+			<file from="root/includes/mods/ucp/ucp_karma.php" to="/includes/mods/ucp/ucp_karma.php" />
+			<file from="root/install_karma/index.php" to="/install_karma/index.php" />
+			<file from="root/install_karma/install_install.php" to="/install_karma/install_install.php" />
+			<file from="root/install_karma/install_main.php" to="/install_karma/install_main.php" />
+			<file from="root/install_karma/install_update.php" to="/install_karma/install_update.php" />
+			<file from="root/install_karma/schemas/firebird_schema.sql" to="/install_karma/schemas/firebird_schema.sql" />
+			<file from="root/install_karma/schemas/index.htm" to="/install_karma/schemas/index.htm" />
+			<file from="root/install_karma/schemas/mssql_schema.sql" to="/install_karma/schemas/mssql_schema.sql" />
+			<file from="root/install_karma/schemas/mysql_40_schema.sql" to="/install_karma/schemas/mysql_40_schema.sql" />
+			<file from="root/install_karma/schemas/mysql_41_schema.sql" to="/install_karma/schemas/mysql_41_schema.sql" />
+			<file from="root/install_karma/schemas/oracle_schema.sql" to="/install_karma/schemas/oracle_schema.sql" />
+			<file from="root/install_karma/schemas/postgres_schema.sql" to="/install_karma/schemas/postgres_schema.sql" />
+			<file from="root/install_karma/schemas/schema_data.sql" to="/install_karma/schemas/schema_data.sql" />
+			<file from="root/install_karma/schemas/sqlite_schema.sql" to="/install_karma/schemas/sqlite_schema.sql" />
+			<file from="root/karma.php" to="/karma.php" />
+			<file from="root/language/en/email/karma_notify_decrease_anonym_powered.txt" to="/language/en/email/karma_notify_decrease_anonym_powered.txt" />
+			<file from="root/language/en/email/karma_notify_decrease_anonym.txt" to="/language/en/email/karma_notify_decrease_anonym.txt" />
+			<file from="root/language/en/email/karma_notify_decrease_powered.txt" to="/language/en/email/karma_notify_decrease_powered.txt" />
+			<file from="root/language/en/email/karma_notify_decrease.txt" to="/language/en/email/karma_notify_decrease.txt" />
+			<file from="root/language/en/email/karma_notify_increase_anonym_powered.txt" to="/language/en/email/karma_notify_increase_anonym_powered.txt" />
+			<file from="root/language/en/email/karma_notify_increase_anonym.txt" to="/language/en/email/karma_notify_increase_anonym.txt" />
+			<file from="root/language/en/email/karma_notify_increase_powered.txt" to="/language/en/email/karma_notify_increase_powered.txt" />
+			<file from="root/language/en/email/karma_notify_increase.txt" to="/language/en/email/karma_notify_increase.txt" />
+			<file from="root/language/en/mods/karma.php" to="/language/en/mods/karma.php" />
+			<file from="root/language/en/mods/karma_faq.php" to="/language/en/mods/karma_faq.php" />
+			<file from="root/styles/prosilver/imageset/icon_karma_decrease.gif" to="/styles/prosilver/imageset/icon_karma_decrease.gif" />
+			<file from="root/styles/prosilver/imageset/icon_karma_increase.gif" to="/styles/prosilver/imageset/icon_karma_increase.gif" />
+			<file from="root/styles/prosilver/template/karma_body.html" to="/styles/prosilver/template/karma_body.html" />
+			<file from="root/styles/prosilver/template/karma_ucp.html" to="/styles/prosilver/template/karma_ucp.html" />
+			<file from="root/styles/prosilver/template/karma_view.html" to="/styles/prosilver/template/karma_view.html" />
+			<file from="root/styles/prosilver/theme/karma.css" to="/styles/prosilver/theme/karma.css" />
+		</copy>
+		<open src="adm/style/acp_users_overview.html">
+			<edit>
+				<find><![CDATA[<dl>
+	<dt><label>{L_WARNINGS}:</label></dt>]]></find>
+				<action type="before-add"><![CDATA[<!-- [+] Karma MOD //-->
+<dl>
+	<dt><label>{L_KARMA}:</label></dt>
+	<dd><strong>{USER_KARMA}</strong></dd>
+</dl>
+<!-- [-] Karma MOD //-->]]></action>
+			</edit>
+		</open>
+		<open src="adm/style/acp_users_prefs.html">
+			<edit>
+				<find><![CDATA[		<dd>{S_POST_SORT_DIR}</dd>
+	</dl>
+	</fieldset>]]></find>
+				<action type="after-add"><![CDATA[
+	<!-- [+] Karma MOD //-->
+	<!-- IF S_KARMA_ENABLE -->
+	<!-- INCLUDE acp_karma_users.html -->
+	<!-- ENDIF -->
+	<!-- [-] Karma MOD //-->]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_main.php">
+			<edit>
+				<find><![CDATA[			$template->assign_var('S_REMOVE_INSTALL', true);
+		}]]></find>
+				<action type="after-add"><![CDATA[
+		// [+] Karma MOD
+		global $karmamod;
+		$karmamod->acp_main_install();
+		// [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_modules.php">
+			<edit>
+				<find><![CDATA[			closedir($dh);]]></find>
+				<action type="after-add"><![CDATA[
+			// [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_global($fileinfo, $module_class);
+			// [-] Karma MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		else
+		{]]></find>
+				<action type="after-add"><![CDATA[			// [+] Karma MOD
+			global $karmamod;
+			$karmamod->acp_modules_single($directory, $module, $module_class);
+			// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_styles.php">
+			<edit>
+				<find><![CDATA[		// Execute overall actions
+		switch ($action)]]></find>
+				<action type="before-add"><![CDATA[		// [+] Karma MOD
+		global $karmamod;
+		$karmamod->acp_styles_imageset($this->imageset_keys);
+		// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_users.php">
+			<edit>
+				<find><![CDATA[			break;
+
+			case 'feedback':]]></find>
+				<action type="before-add"><![CDATA[				// [+] Karma MOD
+				global $karmamod;
+				$karmamod->acp_users_overview($user_row);
+				// [-] Karma MOD
+]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[					'notify'	=> request_var('notify', $user_row['user_notify']),
+				);]]></find>
+				<action type="after-add"><![CDATA[
+				// [+] Karma MOD
+				global $karmamod;
+				$karmamod->acp_users_data($data, $user_row);
+				// [-] Karma MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[						'post_sd'		=> array('string', false, 1, 1),
+					));]]></find>
+				<action type="after-add"><![CDATA[
+					// [+] Karma MOD
+					$karmamod->acp_users_error($error, $data);
+					// [-] Karma MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[							'user_notify'	=> $data['notify'],
+						);]]></find>
+				<action type="after-add"><![CDATA[						// [+] Karma MOD
+						$karmamod->acp_users_sql($sql_ary, $data);
+						// [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="includes/functions_module.php">
+			<edit>
+				<find><![CDATA[		// We "could" build a true tree with this function - maybe mod authors want to use this...]]></find>
+				<action type="before-add"><![CDATA[		// [+] Karma MOD
+		global $karmamod;
+		$karmamod->module_disable($this->module_cache['modules']);
+		// [-] Karma MOD
+]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		$module_path = $this->include_path . $this->p_class;]]></find>
+				<action type="after-add"><![CDATA[		// [+] Karma MOD
+		global $karmamod;
+		$karmamod->module_load($module_path, $this->p_name, $this->p_class);
+		// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="includes/session.php">
+			<edit>
+				<find><![CDATA[				redirect(append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=profile&amp;mode=reg_details'));
+			}
+		}]]></find>
+				<action type="after-add"><![CDATA[
+		// [+] Karma MOD
+		if (!class_exists('karmamod'))
+		{
+			require($phpbb_root_path . 'includes/functions_karma.' . $phpEx);
+		}
+		global $karmamod;
+		$karmamod = new karmamod();
+		// [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/imageset/imageset.cfg">
+			<edit>
+				<find><![CDATA[img_icon_user_warn = icon_user_warn.gif*20*20]]></find>
+				<action type="after-add"><![CDATA[
+# [+] Karma MOD
+img_icon_karma_increase = icon_karma_increase.gif*20*20
+img_icon_karma_decrease = icon_karma_decrease.gif*20*20
+# [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/index_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF NEWEST_USER -->]]></find>
+				<action type="before-add"><![CDATA[<!-- [+] Karma MOD -->
+<!-- IF KARMA_TOPLIST -->
+	<h3>{L_KARMA_TOPLIST}</h3>
+	<p>{L_KARMA_TOPLIST_EXPLAIN}: <strong>{KARMA_TOPLIST}</strong></p>
+<!-- ENDIF -->
+<!-- [-] Karma MOD -->
+]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/jumpbox.html">
+			<edit>
+				<comment lang="en"><![CDATA[You must find first this string]]></comment>
+				<find><![CDATA[<!-- ENDIF -->]]></find>
+				<action type="before-add"><![CDATA[<!-- [+] Karma MOD //-->
+<!-- ELSEIF $KARMAMOD -->
+	<p><a class="left-box {S_CONTENT_FLOW_BEGIN}" href="{U_VIEWPROFILE}" title="{L_KARMA_USER_PROFILE}" accesskey="r">{L_RETURN_TO} {L_KARMA_USER_PROFILE}</a></p>
+<!-- [-] Karma MOD //-->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/memberlist_view.html">
+			<edit>
+				<find><![CDATA[		</dl>
+	</div>]]></find>
+				<action type="before-add"><![CDATA[		<!-- [+] Karma MOD //-->
+		<!-- IF S_KARMA -->
+			<dt>{L_KARMA}:</dt>
+			<dd>{KARMA}<!-- IF U_KARMA_COMMENTS --> | <strong><a href="{U_KARMA_COMMENTS}">{L_KARMA_USER_COMMENTS}</a></strong><!-- ENDIF -->
+				<!-- IF U_KARMA_INCREASE || U_KARMA_DECREASE -->
+				<br />
+				<span class="karma-icons">
+				<!-- IF U_KARMA_INCREASE --><span class="karma-increase-icon"><a href="{U_KARMA_INCREASE}" title="{L_KARMA_INCREASE}"><span>{L_KARMA_INCREASE}</span></a></span><!-- ENDIF -->
+				<!-- IF U_KARMA_DECREASE --><span class="karma-decrease-icon"><a href="{U_KARMA_DECREASE}" title="{L_KARMA_DECREASE}"><span>{L_KARMA_DECREASE}</span></a></span><!-- ENDIF -->
+				</span>
+			<!-- ENDIF -->
+			</dd>
+		<!-- ENDIF -->
+		<!-- [-] Karma MOD //-->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/viewtopic_body.html">
+			<edit>
+				<find><![CDATA[		<!-- IF postrow.U_PM or postrow.U_EMAIL or postrow.U_WWW or postrow.U_MSN or postrow.U_ICQ or postrow.U_YIM or postrow.U_AIM or postrow.U_JABBER -->]]></find>
+				<action type="before-add"><![CDATA[		<!-- [+] Karma MOD -->
+		<!-- IF postrow.S_KARMA_ENABLED -->
+			<!-- IF postrow.U_KARMA_COMMENTS -->
+				<dd><a href="{postrow.U_KARMA_COMMENTS}"><strong>{L_KARMA}:</strong> {postrow.KARMA}</a></dd>
+			<!-- ELSE -->
+				<dd><strong>{L_KARMA}:</strong> {postrow.KARMA}</dd>
+			<!-- ENDIF -->
+			<!-- IF postrow.U_KARMA_INCREASE || postrow.U_KARMA_DECREASE -->
+				<dd>
+					<span class="karma-icons">
+					<!-- IF postrow.U_KARMA_INCREASE --><span class="karma-increase-icon"><a href="{postrow.U_KARMA_INCREASE}" title="{L_KARMA_INCREASE}"><span>{L_KARMA_INCREASE}</span></a></span><!-- ENDIF -->
+					<!-- IF postrow.U_KARMA_DECREASE --><span class="karma-decrease-icon"><a href="{postrow.U_KARMA_DECREASE}" title="{L_KARMA_DECREASE}"><span>{L_KARMA_DECREASE}</span></a></span><!-- ENDIF -->
+					</span>
+				</dd>
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+		<!-- [-] Karma MOD -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/theme/stylesheet.css">
+			<edit>
+				<find><![CDATA[@import url("colours.css");]]></find>
+				<action type="after-add"><![CDATA[/* [+] Karma MOD */
+@import url("karma.css");
+/* [-] Karma MOD */]]></action>
+			</edit>
+		</open>
+		<open src="common.php">
+			<edit>
+				<find><![CDATA[$config = $cache->obtain_config();]]></find>
+				<action type="after-add"><![CDATA[// [+] Karma MOD
+require_once($phpbb_root_path . 'includes/mods/functions_karma.' . $phpEx);
+// [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="faq.php">
+			<edit>
+				<find><![CDATA[// Pull the array data from the lang pack]]></find>
+				<action type="before-add"><![CDATA[// [+] Karma MOD
+$karmamod->faq();
+// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="index.php">
+			<edit>
+				<find><![CDATA[// Output page
+page_header($user->lang['INDEX']);]]></find>
+				<action type="before-add"><![CDATA[// [+] Karma MOD
+$karmamod->toplist();
+// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="memberlist.php">
+			<edit>
+				<find><![CDATA[			unset($module);
+		}]]></find>
+				<action type="after-add"><![CDATA[
+		// [+] Karma MOD
+		$karmamod->memberlist_viewprofile($member, $foe, $friend);
+		// [-] Karma MOD]]></action>
+			</edit>
+		</open>
+		<open src="search.php">
+			<edit>
+				<find><![CDATA[$s_limit_days = $s_sort_key = $s_sort_dir = $u_sort_param = '';]]></find>
+				<action type="before-add"><![CDATA[// [+] Karma MOD
+$karmamod->search_dropdown($sort_by_text);
+// [-] Karma MOD
+]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	// pre-made searches
+	$sql = $field = $l_search_title = '';]]></find>
+				<action type="before-add"><![CDATA[
+	// [+] Karma MOD
+	$karmamod->search_order_sql($sort_by_sql);
+	// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<open src="viewtopic.php">
+			<edit>
+				<comment lang="en"><![CDATA[You not need to add something after this FIND
+It's only for help to find right string]]></comment>
+				<find><![CDATA[// We need to grab it because we do reverse ordering sometimes
+$max_post_time = 0;]]></find>
+				<find><![CDATA[		AND u.user_id = p.poster_id'
+));]]></find>
+				<action type="after-add"><![CDATA[// [+] Karma MOD
+$karmamod->viewtopic_sql($sql);
+// [-] Karma MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	// Define the global bbcode bitfield, will be used to load bbcodes]]></find>
+				<action type="before-add"><![CDATA[	// [+] Karma MOD
+	$karmamod->viewtopic_rowset($rowset[$row['post_id']], $row);
+	// [-] Karma MOD
+]]></action>
+			</edit>
+			<edit>
+				<comment lang="en"><![CDATA[Don't miss, here must be 3(!!!) "}" symbols]]></comment>
+				<find><![CDATA[					$user_cache[$poster_id]['age'] = (int) ($now['year'] - $bday_year - $diff);
+				}
+			}
+		}]]></find>
+				<action type="after-add"><![CDATA[		// [+] Karma MOD
+		$karmamod->viewtopic_usercache($user_cache[$poster_id], $poster_id, $row);
+		// [-] Karma MOD
+]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	// Dump vars into template
+	$template->assign_block_vars('postrow', $postrow);]]></find>
+				<action type="before-add"><![CDATA[	// [+] Karma MOD
+	$karmamod->viewtopic_postrow($postrow, $user_cache[$poster_id], $poster_id, $forum_id, $topic_id, $row);
+	// [-] Karma MOD
+]]></action>
+			</edit>
+		</open>
+		<diy-instructions lang="en"><![CDATA[Open in your web browser and follow the instructions in /install_karma]]></diy-instructions>
+	</action-group>
+</mod>

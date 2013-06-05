@@ -1,0 +1,11 @@
+Subject: Alguien te ha quitado karma
+
+Hola {USERNAME},
+
+Alguien te ha quitado karma en "{SITENAME}".
+{COMMENT}
+{BACKLINK}
+
+Has solicitado que se te notifique en estas situaciones, recuerda que siempre puedes elegir no ser notificado, cambiando la configuracion apropiada en tu Panel de Usuario.
+
+{EMAIL_SIG}

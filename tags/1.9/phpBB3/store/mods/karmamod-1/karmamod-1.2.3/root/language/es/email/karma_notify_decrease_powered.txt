@@ -1,0 +1,11 @@
+Subject: Te han quitado karma
+
+Hola {USERNAME},
+
+El usuario {AUTHOR_NAME} te ha quitado karma con {POWER} puntos de potencia en "{SITENAME}".
+{COMMENT}
+{BACKLINK}
+
+Has solicitado que se te notifique en estas situaciones, recuerda que siempre puedes elegir no ser notificado, cambiando la configuracion apropiada en tu Panel de Usuario.
+
+{EMAIL_SIG}
